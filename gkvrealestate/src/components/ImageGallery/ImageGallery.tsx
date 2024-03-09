@@ -35,7 +35,7 @@ const ImageGallery = () => {
 //   };
 
   return (
-        <div className="flex flex-col w-screen items-center w-screen h-screen">
+        <div className="flex flex-col w-screen h-screen items-center">
           <div>
               <h1 className="text-white"> 
               Currently working on the image gallery

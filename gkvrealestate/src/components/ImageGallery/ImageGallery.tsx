@@ -1,47 +1,41 @@
 /**
- * @author Gregory Vincent
+ * @author Gregory Vincent Jr
  * Image Gallery showing the different units
  */
 
 import { useState, useEffect } from "react";
-const ImageGallery = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+import generateImageURLs from "../../api/s3Functions";
+import { URLObject } from "../../types/URLObject";
+const ImageGallery = async () => {
+  const [imageIndex, setImageIndex] = useState<number>(0);
+  const [imageURLs, setImageURLs] = useState<URLObject[]>([]);
+  // grab image urls from s3
+  const retrievedURLs: URLObject[] = await generateImageURLs();
+  // update state and ui if the retrieved urls ever change
   useEffect(() => {
-    setCurrentImage(0);
-  }, []);
-
-  //used for auto scroll feature
-//   const scroll = true;
-  let currentImgInterval: number;
-  let interval = 6000;
+    setImageURLs([...retrievedURLs])
+  }, [retrievedURLs]);
 
   function nextImage() {
-    currentImgInterval = setInterval(NextImg, interval);
+    // go back to the beginning of the array if necessary
+    setImageIndex(imageIndex === imageURLs.length ? 0 : imageIndex + 1)
   }
- 
+  let imageInterval = 6000
   useEffect(() => {
-      nextImage();
-    //after each new picture is shown, reset the timer.
-    return () => clearInterval(currentImgInterval);
-  }, [currentImage]);
+    setInterval(nextImage, 6000)
+    // cleanup by removing the timer
+    return () => clearInterval(imageInterval);
+  }, [imageIndex]);
 
-  /**logic for handling the next and prev images*/
-  const NextImg = () => {
-    //check list position before incrementing
-    // setCurrentImage(currentImage === picListLength ? 0 : currentImage + 1);
-  };
-//   const PrevImg = () => {
-//     setCurrentImage(currentImage - 1 === -1 ? picListLength : currentImage - 1);
-//   };
-
+  // added for readability
+  const currentURL = imageURLs[imageIndex].url;
+  const currentKey = imageURLs[imageIndex].key;
   return (
-        <div className="flex flex-col w-screen h-screen items-center">
-          <div>
-              <h1 className="text-white"> 
-              Currently working on the image gallery
-              </h1>
-          </div>
-      </div>
+  <div className="flex flex-col w-screen h-screen justify-center">
+    <img className="w-full h-full" src={currentURL}key={currentKey}>
+      <p>{currentKey}</p>
+    </img>
+  </div>
         );
 };
 export default ImageGallery;

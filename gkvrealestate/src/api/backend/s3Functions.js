@@ -4,12 +4,12 @@
  * @date 3/8/24
  * image fetching fn from s3
  */
+
 import dotenv from 'dotenv';
 dotenv.config();
-import AWS from 'aws-sdk';
-import { URLObject } from "../types/URLObject";
+import AWS from "aws-sdk";
 // check for these variables before doing anything else
-if(!(process.env.BUCKET && process.env.AWS_SECRET_ACCESS_KEY && process.env.ACCESS_KEY_ID && process.env.REGION)){
+if(!(process.env.BUCKET && process.env.AWS_SECRET_ACCESS_KEY && process.env.AWS_ACCESS_KEY_ID && process.env.REGION)){
     throw new Error("Needed environment variables aren't present.")
 }
 
@@ -24,7 +24,7 @@ AWS.config.update({
     secretAccessKey: process.env.AWS_SECRET_ACESS_KEY 
 });
 
-const generateSingleImageURL = async (key: string | undefined) => {
+const generateSingleImageURL = async (key) => {
     try {
         const getObjectParameters = {
             Bucket: process.env.BUCKET,
@@ -39,9 +39,9 @@ const generateSingleImageURL = async (key: string | undefined) => {
     }
 }
 
-const generateImageURLs = async (): Promise<URLObject[]> => {
+const generateImageURLs = async () => {
     try {
-        let imageURLs: URLObject[] = []
+        let imageURLs = []
         // get all the images in the bucket...very few(< 10), so acceptable for now
         // if the application grows though this will have to change
         const images = await client.listObjectsV2({ Bucket: process.env.BUCKET ?? "" }).promise();
@@ -50,17 +50,20 @@ const generateImageURLs = async (): Promise<URLObject[]> => {
             imageURLs = await Promise.all(images.Contents.map(async (image) => {
                 // key == image name
                 const createdURL = await generateSingleImageURL(image.Key);
-                return { key: image.Key, url: createdURL } as URLObject;
+                return { key: image.Key, url: createdURL };
             }));
         }
+        console.log("Successfully made image urls.")
         return imageURLs;
     } catch (error) {
-        console.error("Error  make URLs. Returning an empty array:", error);
+        console.error("Could not create URLs for images...check S3. Further information: ", error);
         return []
     }
 }
+generateImageURLs();
 
 export default generateImageURLs;
+
 
 
 

@@ -1,6 +1,7 @@
 /**
  * @author Gregory Vincent Jr
  * Image Gallery showing the different units
+ * test
  */
 
 import { useState, useEffect } from "react";

@@ -7,15 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-**/node_modules/*
+# testing that node modules no longer shows up
+# Editor directories and files
 node_modules/
 dist
 dist-ssr
 *.local
 # security
 .env
-# testing that node modules no longer shows up
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea

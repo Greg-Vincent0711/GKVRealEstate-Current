@@ -20,7 +20,7 @@ const ImageGallery = () => {
   const memoizedImageURLs = useMemo(() => imageURLs, [imageURLs])
   // console.log(imageURLs)
   function switchImage() {
-    setImageIndex(imageIndex === imageURLs.length - 1 ? 0 : imageIndex + 1)
+    setImageIndex(imageIndex === memoizedImageURLs.length - 1 ? 0 : imageIndex + 1)
   }
   // let imageInterval = 6000 
   useEffect(() => {

@@ -1,6 +1,5 @@
 /**
- * Moved to its own file so that the type can be shared
- * between api and client files as opposed to redefinition
+ * Type matched to the attributes from an s3 image url
  */
 interface URLObject {
     key: string | undefined,

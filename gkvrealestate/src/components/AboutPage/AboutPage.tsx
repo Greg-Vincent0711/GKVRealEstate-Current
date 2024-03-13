@@ -17,7 +17,7 @@ const AboutPage = () => {
             rootMargin: "10px"
         })
         observer.observe(observedPoint.current as Element);
-        // cleanuo the observer to protect against memory leaks
+        // cleanup the observer to protect against memory leaks
         return () => observer.unobserve(observedPoint.current as Element);
     }, [])
     const sharedStyles =`fade ${visible ? 'fade-in' : 'fade-out'}`

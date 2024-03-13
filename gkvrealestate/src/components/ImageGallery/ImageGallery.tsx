@@ -4,35 +4,37 @@
  * test
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { URLObject } from "../../types/URLObject";
-const ImageGallery = async () => {
+const ImageGallery = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
   const [imageURLs, setImageURLs] = useState<URLObject[]>([]);
   
-  // used for now, but need to implement caching
+  // on first render
   useEffect(() => {
-    fetch('/api/getURLs')
+    fetch('http://localhost:5001/getImageURLs')
       .then(response => response.json())
-      .then(data => setImageURLs(data))
-      .catch(error => console.error('Error fetching images:', error));
-  }, [imageURLs]);
-
-  console.log(imageURLs)
-  function changeImage() {
-    // go back to the beginning of the array if necessary
-    setImageIndex(imageIndex === imageURLs.length ? 0 : imageIndex + 1)
+      .then((data: URLObject[]) => setImageURLs(data))
+  },[]);
+  // as long as cache isn't cleared and images don't change(they most likely won't)
+  const memoizedImageURLs = useMemo(() => imageURLs, [imageURLs])
+  // console.log(imageURLs)
+  function switchImage() {
+    setImageIndex(imageIndex === imageURLs.length - 1 ? 0 : imageIndex + 1)
   }
-  let imageInterval = 6000
+  // let imageInterval = 6000 
   useEffect(() => {
-    setInterval(changeImage, 6000)
+    // change the picture every six seconds
+    // setInterval(switchImage, 6000)
     // cleanup by removing the timer
-    return () => clearInterval(imageInterval);
-  }, [imageIndex]);
-
-    return (
-      <div className="flex flex-col w-screen h-screen justify-center">
-        <img className="w-full h-full" src={imageURLs[imageIndex].url}/>
+    // return () => clearInterval(imageInterval);
+  }, [imageIndex]); 
+  const currentImage = (memoizedImageURLs[imageIndex] && memoizedImageURLs[imageIndex].url) ?? "";
+  const currentKey = (memoizedImageURLs[imageIndex] && memoizedImageURLs[imageIndex].key) ?? "";
+    return memoizedImageURLs.length !== 0 &&  (
+      <div className="flex flex-col w-screen h-full justify-start items-center">
+        <img className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4" src={currentImage}/>
+        <p className="text-white text-xl z-10 ">{currentKey}</p>
       </div>
     );
 };

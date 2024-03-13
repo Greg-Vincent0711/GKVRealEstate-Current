@@ -4,9 +4,15 @@
  */
 import express from 'express';
 import generateImageURLs from "./backend/s3Functions.js";
-
+import cors from "cors";
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
+
+app.use(cors({
+  origin: `http://localhost:5173`,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.get('/getImageURLs', async (_req, res) => {
   try {

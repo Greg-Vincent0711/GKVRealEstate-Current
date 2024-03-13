@@ -3,11 +3,12 @@ import "./App.css"
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 function App() {
   return (
-    <div className="flex flex-col overflow-x-hidden">
-      <h1 className="flex mt-4 justify-evenly text-white text-5xl">GKVRealEstate</h1>
-        {/** @ts-expect-error*/}
+    <div className=" flex flex-col justify-evenly overflow-y-auto">
+      <h1 className="mt-4 flex flex-col items-center text-white text-5xl">GKVRealEstate</h1>
       <ImageGallery/>
-      <AboutPage/>
+      <div className="mt-auto">
+        <AboutPage/>
+      </div>
     </div>
   )
 }

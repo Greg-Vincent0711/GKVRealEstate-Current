@@ -22,7 +22,7 @@ const AboutPage = () => {
     }, [])
     const sharedStyles =`fade ${visible ? 'fade-in' : 'fade-out'}`
   return (
-    <div className="flex flex-col mt-8 md:mt-0 w-10/12 mx-auto text-white pt-2 px-3 pb-11 md:pb-32 lg:">
+    <div className="flex flex-col mt-8 md:mt-0 w-10/12 mx-auto text-white px-3 pb-11 md:pb-32 h-screen">
       <div className="border-b-2 mb-6">
       <h1 className={`text-3xl md:text-5xl mb-2 lg:mb-4 ${sharedStyles}`} ref={observedPoint}>
           Behind GKVRealEstate

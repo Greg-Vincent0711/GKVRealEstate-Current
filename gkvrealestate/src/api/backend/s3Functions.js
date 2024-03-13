@@ -60,8 +60,6 @@ const generateImageURLs = async () => {
         return []
     }
 }
-generateImageURLs();
-
 export default generateImageURLs;
 
 

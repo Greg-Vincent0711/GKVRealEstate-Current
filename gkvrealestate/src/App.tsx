@@ -1,14 +1,12 @@
-import AboutPage from "./components/AboutPage/AboutPage";
 import "./App.css"
+import AboutPage from "./components/AboutPage/AboutPage";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 function App() {
   return (
-    <div className=" flex flex-col justify-end overflow-y-auto h-full">
-      <h1 className="mt-4 flex flex-col items-center text-white text-5xl">GKVRealEstate</h1>
+    <div className="flex flex-col h-screen overflow-auto">
+      <h1 className="text-white text-4xl text-center m-4">GKVRealEstate</h1>
       <ImageGallery/>
-      {/* <div className="mt-10"> */}
-        <AboutPage/>
-      {/* </div> */}
+      <AboutPage/>
     </div>
   )
 }

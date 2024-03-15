@@ -14,9 +14,12 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
+
+
 app.get('/getImageURLs', async (_req, res) => {
   try {
     const imageURLs = await generateImageURLs();
+    console.log(imageURLs)
     res.json(imageURLs);
   } catch (error) {
     console.error('Error fetching images:', error);

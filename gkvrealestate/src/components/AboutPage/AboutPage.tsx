@@ -14,30 +14,30 @@ const AboutPage = () => {
             setVisible(scrollPoint.isIntersecting);
         }, {
             root: null,
-            rootMargin: "10px"
+            rootMargin: "10px",
+            threshold: 0
         })
         observer.observe(observedPoint.current as Element);
         // cleanup the observer to protect against memory leaks
         return () => observer.unobserve(observedPoint.current as Element);
     }, [])
-    const sharedStyles =`fade ${visible ? 'fade-in' : 'fade-out'}`
+    const fadeEffect =`fade ${visible ? 'fade-in' : 'fade-out'}`
   return (
-    <div className="flex flex-col mt-8 md:mt-0 w-10/12 mx-auto text-white px-3 pb-11 md:pb-32 h-screen">
-      <div className="border-b-2 mb-6">
-      <h1 className={`text-3xl md:text-5xl mb-2 lg:mb-4 ${sharedStyles}`} ref={observedPoint}>
-          Behind GKVRealEstate
-        </h1>
-        <p className={`text-2xl mb-8 md:text-3xl lg:text-4xl ${sharedStyles}`}>
-          GKVRealEstate is the collective effort of two highly educated people
-          looking to build long-term wealth for their family far into the future.
-        </p>
+    <div className="flex flex-col mt-8 w-10/12 mx-auto text-white pb-8">
+      <div className={`border-b-2 mb-6 ${fadeEffect}`}>
+        <h1 className={`text-2xl mb-2 ${fadeEffect}`}>
+            Behind GKVRealEstate
+          </h1>
+          <p className={`text-xl mb-8 ${fadeEffect}`}>
+            GKVRealEstate is the collective effort of two highly educated people
+            looking to build long-term wealth for their family far into the future.
+          </p>
       </div>
-      {/**Text block about the website creator and Real Estate. Bottom right quadrant of the page */}
-      <div>
-        <h1 className={`text-3xl md:text-5xl mb-2 lg:mb-4 ${sharedStyles}`} ref={observedPoint}>
+      <div className="">
+        <h1 className={`text-2xl ${fadeEffect}`}>
           What's most Important
         </h1>
-        <p className={`text-2xl md:text-3xl lg:text-4xl ${sharedStyles}`}> 
+        <p className={`text-xl ${fadeEffect}`} ref={observedPoint}> 
           {" "}
           Real Estate Investing can serve as a way to secure yourself and family
           financially. However, it is not solely about collecting passive income. 

@@ -53,7 +53,7 @@ const generateImageURLs = async () => {
                 return { key: image.Key, url: createdURL };
             }));
         }
-        console.log("Successfully made image urls.")
+        console.log("Made a get request to the server.")
         return imageURLs;
     } catch (error) {
         console.error("Could not create URLs for images...check S3. Further information: ", error);

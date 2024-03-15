@@ -12,7 +12,7 @@ const ImageGallery = () => {
   
 
   const filterImageNames = (urls: URLObject[]): URLObject[] => {
-    const separators = /[._]|\jpg|upscaled/g; 
+    const separators = /[._]|\jpg/g; 
       let res: URLObject[] = urls.map((url) => {
         url.key = url.key?.split(separators).join(" ")
         return url;
@@ -38,7 +38,7 @@ const ImageGallery = () => {
     let interval = 3000;
     useEffect(() => {
       //automatically scroll to the next picture
-        picInterval = setInterval(switchImage, interval);
+        // picInterval = setInterval(switchImage, interval);
       //after each new picture is shown, reset the timer.
       return () => clearInterval(picInterval);
     }, [imageIndex]);  
@@ -46,11 +46,12 @@ const ImageGallery = () => {
 
   const currentImage = (memoizedImageURLs[imageIndex] && memoizedImageURLs[imageIndex].url) ?? "";
   const currentKey = (memoizedImageURLs[imageIndex] && memoizedImageURLs[imageIndex].key) ?? "";
-    return memoizedImageURLs.length >= 1 &&  (
-      <div className="flex flex-col w-screen h-full justify-start text-center">
-        <img className="w-screen px-4" src={currentImage}/>
-        <p className="text-white text-2xl m-2 ">{currentKey}</p>
-      </div>
-    );
+  return memoizedImageURLs.length >= 1 && (
+    <div className="flex flex-col w-screen h-full justify-start text-center">
+      <img className="w-full h-64 px-4" src={currentImage} alt={currentKey} />
+      <p className="text-white text-2xl m-2">{currentKey}</p>
+      <button onClick={switchImage}>click to change</button>
+    </div>
+  );
 };
 export default ImageGallery;

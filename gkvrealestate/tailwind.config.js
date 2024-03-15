@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js,ts,tsx}"],
-  theme: {
-    // needed for responsive design
-    screens: {
-      'sm': '640px',
-      'md': '760px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
-    }
-  },
-  plugins: [],
-}
+export const content = ["./src/**/*.{html,js,ts,tsx}"];
+export const theme = {
+  screens: {
+    'mobile-sm': '370px',
+    'mobile-md': '390px',
+    'mobile-lg': "400px",
+    'sm': '535px',
+    'md': '700px',
+    'lg': '800px',
+    'xl': '900px',
+    '2xl': '1000px',
+    '3xl': '1200px',
+  }
+};
+export const plugins = [];

@@ -17,7 +17,6 @@ const AboutPage = () => {
             threshold: .6
         })
         observer.observe(observedPoint.current as Element);
-        // cleanup the observer to protect against memory leaks
         return () => observer.unobserve(observedPoint.current as Element);
     }, [])
     const fadeEffect =`fade ${visible ? 'fade-in' : 'fade-out'}`

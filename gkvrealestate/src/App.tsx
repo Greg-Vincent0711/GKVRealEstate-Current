@@ -1,6 +1,7 @@
 import "./App.css"
 import AboutPage from "./components/AboutPage/AboutPage";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
+
 function App() {
   return (
     <div className="h-screen">

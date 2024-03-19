@@ -31,7 +31,7 @@ const AboutPage = () => {
             looking to build long-term wealth for their family far into the future.
           </p>
       </div>
-      <div className="">
+      <div>
         <h1 className={`text-2xl mb-2 md:text-4xl xl:text-5xl lg:mb-4 ${fadeEffect}`}>
           What's most Important
         </h1>

@@ -54,7 +54,7 @@ const ImageGallery = () => {
   const currentKey = (imageURLs[imageIndex] && imageURLs[imageIndex].key) ?? "";
   return imageURLs.length >= 1 && (
     <div className="flex flex-col w-screen h-full justify-start text-center">
-      <img className="w-full h-64 2xl:h-screen 3xl:px-0 2xl:px-0 2xl:pb-8 sm:h-72 sm:px-6 px-4 md:h-96 md:px-8 lg:px-10 lg:h-4/6 2xl:h-96 2xl:px-24" src={currentImage} alt={currentKey} />
+      <img className="w-full h-64 sm:h-96 xl:h-3/4 2xl:h-screen 2xl:pb-8 sm:h-72 2xl:px-0 md:h-96 md:px-0 2xl:h-96 2xl:px-24" src={currentImage} alt={currentKey} />
       <p className="text-white text-2xl m-2 md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-5xl 2xl:-mt-32">{currentKey}</p>
     </div>
   );

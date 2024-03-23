@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import AWS from "aws-sdk";
 // check for these variables before doing anything else
-if(!(process.env.BUCKET && process.env.AWS_SECRET_ACCESS_KEY && process.env.AWS_ACCESS_KEY_ID && process.env.REGION)){
+if(!(process.env.BUCKET && process.env.SECRET_ACCESS_KEY && process.env.ACCESS_KEY_ID && process.env.REGION)){
     throw new Error("Needed environment variables aren't present.")
 }
 
@@ -21,7 +21,7 @@ const client = new AWS.S3({
 AWS.config.update({ 
     region: process.env.REGION,
     accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACESS_KEY 
+    secretAccessKey: process.env.SECRET_ACESS_KEY 
 });
 
 const generateSingleImageURL = async (key) => {

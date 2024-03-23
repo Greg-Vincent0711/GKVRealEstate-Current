@@ -5,12 +5,13 @@ export const theme = {
     'mobile-sm': '370px',
     'mobile-md': '390px',
     'mobile-lg': "400px",
-    'sm': '535px',
-    'md': '700px',
+    'sm': '500px',
+    'md': '650px',
+    'md-2': "760",
     'lg': '800px',
-    'xl': '900px',
+    'xl': '860px',
     '2xl': '1000px',
-    '3xl': '1200px',
+    '3xl': '1100px',
   }
 };
-export const plugins = [];
+export const plugins = []; 

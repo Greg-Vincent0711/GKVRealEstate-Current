@@ -8,6 +8,7 @@ const AboutPage = () => {
     const observedPoint: MutableRefObject<HTMLHeadingElement | null> = useRef<HTMLHeadingElement>(null);
     const [visible, setVisible] = useState(false);
     useEffect(() => {
+        const observedElement = observedPoint.current as Element; 
       // we only want one observer on first render of the about page
         const observer = new IntersectionObserver((entries) => {
             const scrollPoint = entries[0];
@@ -16,8 +17,8 @@ const AboutPage = () => {
             root: null,
             threshold: .6
         })
-        observer.observe(observedPoint.current as Element);
-        return () => observer.unobserve(observedPoint.current as Element);
+        observer.observe(observedElement);
+        return () => observer.unobserve(observedElement)
     }, [])
     const fadeEffect =`fade ${visible ? 'fade-in' : 'fade-out'}`
   return (

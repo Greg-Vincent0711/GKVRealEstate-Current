@@ -5,24 +5,25 @@
  * image fetching fn from s3
  */
 
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from "dotenv"
+// dotenv.config();
+dotenv.configDotenv();
 import AWS from "aws-sdk";
 // check for these variables before doing anything else
 if(!(process.env.BUCKET && process.env.SECRET_ACCESS_KEY && process.env.ACCESS_KEY_ID && process.env.REGION)){
     throw new Error("Needed environment variables aren't present.")
 }
 
+AWS.config.update({ 
+    region: process.env.REGION,
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY 
+});
+
 const client = new AWS.S3({
     params: {Bucket: process.env.BUCKET},
     region: process.env.REGION,
 })
-
-AWS.config.update({ 
-    region: process.env.REGION,
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: process.env.SECRET_ACESS_KEY 
-});
 
 const generateSingleImageURL = async (key) => {
     try {

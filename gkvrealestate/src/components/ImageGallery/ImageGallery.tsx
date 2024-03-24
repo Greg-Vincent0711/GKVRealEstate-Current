@@ -19,7 +19,7 @@ const ImageGallery = () => {
   }
 
   const getImages = async (): Promise<URLObject[]> => {
-    const imgURLs = (await fetch('http://localhost:5001/getImageURLs')).json()
+    const imgURLs = (await fetch('https://eb55bt3aovxp7ckcii5hb2vfza0uwvtb.lambda-url.us-east-1.on.aws/getImageURLs)')).json()
     return formatImageNames(await imgURLs)
   }
 

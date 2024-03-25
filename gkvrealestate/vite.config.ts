@@ -11,7 +11,7 @@ export default defineConfig({
   build : {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'nested/index.html')
+        main: resolve(__dirname, 'src/main.tsx')
       }
     }
   }

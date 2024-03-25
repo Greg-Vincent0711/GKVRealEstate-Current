@@ -15,6 +15,7 @@ const ImageGallery = () => {
         url.key = url.key?.split(separators).join(" ")
         return url;
       })
+
       return formattedImgNames;
   }
 

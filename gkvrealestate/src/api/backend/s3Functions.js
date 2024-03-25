@@ -6,7 +6,6 @@
  */
 
 import dotenv from "dotenv"
-// dotenv.config();
 dotenv.configDotenv();
 import AWS from "aws-sdk";
 // check for these variables before doing anything else

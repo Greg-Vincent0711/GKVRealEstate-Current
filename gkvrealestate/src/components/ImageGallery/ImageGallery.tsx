@@ -6,7 +6,7 @@
 import { useState, useEffect} from "react";
 import { URLObject } from "../../types/URLObject";
 import { useQuery } from "@tanstack/react-query";
-
+import { awsEndPoint } from "../../endpoints";
 const ImageGallery = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const formatImageNames = (urls: URLObject[]): URLObject[] => {
@@ -19,7 +19,7 @@ const ImageGallery = () => {
   }
 
   const getImages = async (): Promise<URLObject[]> => {
-    const imgURLs = (await fetch('https://eb55bt3aovxp7ckcii5hb2vfza0uwvtb.lambda-url.us-east-1.on.aws/getImageURLs)')).json()
+    const imgURLs = (await fetch(awsEndPoint)).json()
     return formatImageNames(await imgURLs)
   }
 

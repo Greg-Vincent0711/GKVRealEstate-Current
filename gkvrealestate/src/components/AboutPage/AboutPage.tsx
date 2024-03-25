@@ -14,7 +14,7 @@ const AboutPage = () => {
             const scrollPoint = entries[0];
             setVisible(scrollPoint.isIntersecting);
         }, {
-            root: null,
+            root: null, 
             threshold: .6
         })
         observer.observe(observedElement);

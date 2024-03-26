@@ -11,7 +11,7 @@ export default defineConfig({
   build : {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/main.tsx')
+        main: "index.html"
       }
     }
   }

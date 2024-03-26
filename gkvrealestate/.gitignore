@@ -9,6 +9,7 @@ lerna-debug.log*
 
 # Editor directories and files
 node_modules/
+dist
 dist-ssr
 *.local
 # security

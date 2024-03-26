@@ -11,8 +11,7 @@ export default defineConfig({
   build : {
     rollupOptions: {
       input: {
-        main: "index.html",
-        module: "src/main.tsx"
+        main: "/gkvrealestate/src/main.tsx",
       }
     }
   }

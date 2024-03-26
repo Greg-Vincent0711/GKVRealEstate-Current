@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.js'
+import App from './App'
 import './input.css'
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'

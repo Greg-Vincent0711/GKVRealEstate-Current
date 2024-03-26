@@ -11,7 +11,7 @@ export default defineConfig({
   build : {
     rollupOptions: {
       input: {
-        main: "gkvrealestate/index.html"
+        main: "index.html"
       }
     }
   }

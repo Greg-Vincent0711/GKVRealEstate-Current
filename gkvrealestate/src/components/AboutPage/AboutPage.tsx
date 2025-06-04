@@ -1,6 +1,6 @@
 /**
  * @author Gregory Vincent
- * @date 3/6/24
+ * @date 3/6/24, updated 6/4/25
  */
 import "./AboutPage.css";
 import {useRef, useEffect, useState, MutableRefObject} from "react"
@@ -28,8 +28,8 @@ const AboutPage = () => {
             Behind GKVRealEstate
           </h1>
           <p className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-6 ${fadeEffect}`}>
-            GKVRealEstate is the collective effort of two highly educated people
-            looking to build long-term wealth for their family far into the future.
+          GKVRealEstate is the collective effort of two highly educated people looking to
+           provide affordable housing for Capital District residents.
           </p>
       </div>
       <div>

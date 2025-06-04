@@ -5,8 +5,10 @@
 import express from 'express';
 import generateImageURLs from "./backend/s3Functions.js";
 import cors from "cors";
+// const LAMBDA_FN = process.env.AWS
 const app = express();
 const PORT = process.env.SERVER_PORT;
+
 
 app.use(cors({
   origin: `http://localhost:5173/`,

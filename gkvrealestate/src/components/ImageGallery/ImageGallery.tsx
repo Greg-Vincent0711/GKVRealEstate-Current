@@ -6,8 +6,8 @@
 import { useState, useEffect} from "react";
 import { URLObject } from "../../types/URLObject";
 import { useQuery } from "@tanstack/react-query";
-import { awsEndPoint } from "../../endpoints";
-// awsEndPoint
+import generateImageUrls from "../../api/backend/s3Functions.js";
+
 const ImageGallery = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const formatImageNames = (urls: URLObject[]): URLObject[] => {
@@ -21,8 +21,8 @@ const ImageGallery = () => {
   }
 
   const getImages = async (): Promise<URLObject[]> => {
-    const imgURLs = (await fetch(awsEndPoint)).json()
-    return formatImageNames(await imgURLs)
+    const imgURLs = await generateImageUrls()
+    return formatImageNames(imgURLs)
   }
 
   const { data:imageURLs, isLoading, isError } = useQuery(
